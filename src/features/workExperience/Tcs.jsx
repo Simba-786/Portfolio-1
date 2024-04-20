@@ -9,7 +9,7 @@ export default function Tcs() {
       <div className="text-slate-800 font-semibold tracking-wide ">
         <p className="font-bold text-sm mb-4 uppercase">
           Senior Process Associate, Tata Consultancy Services, Mumbai/INDIA (DEC
-          2017 – Present)
+          2017 – Nov 2023)
         </p>
         <div className="flex gap-4">
           <Link

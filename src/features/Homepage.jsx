@@ -1,60 +1,91 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Homepage() {
+function Navigation() {
+  // const { company } = useParams();
+  const list = [
+    "about",
+    "education",
+    "work Experience",
+    "honours",
+    "skills",
+    "technology and Tools",
+  ];
+  /*eslint-disable*/
+  const [selected, setselected] = useState(" ");
+
+  function handleClick(e) {
+    e.preventDefault();
+    setselected(e.target.closest("li").querySelector(".list-span").innerText);
+  }
   return (
-    <Link to="/">
-      <div className=" relative sm:grid sm:grid-cols-2 py-8 px-4 md:flex md:px-1 grid grid-cols-2 md:text-xs text-[10px] flex-col justify-center items-center">
-        <h1 className="  top-0 left-[50%] translate-x-[-50%] absolute   uppercase text-sm mb-4 p-1  text-slate-800 font-semibold  underline underline-offset-4 tracking-wider">
-          Profile
-        </h1>
-        <div className="ring ring-offset-2 ring-slate-800  shadow-lg h-24 w-24 sm:h-24 sm:w-24 md:min-w-24 md:max-w-40 md:min-h-24 md:max-h-40  rounded-lg mb-8 overflow-hidden bg-yellow-400 ">
-          <img
-            className="shadow-lg border-2 sm:h-24 sm:w-24 h-24 w-24 md:min-w-24 md:max-w-40 md:min-h-24 md:max-h-40"
-            src="../asset/images/image.jpg"
-            alt="image1"
-          />
-        </div>
-        <div className="flex text-start  sm:text-start flex-col uppercase p-1 gap-4 text-slate-200 font-semibold">
-          <div>
-            <span className="text-stone-800 ">Name</span>
-            <p>Sindbaaz</p>
-          </div>
-          <div>
-            <span className="text-stone-800 ">Address</span>
-            <p>Ambernath,Maharashtra-421505</p>
-          </div>
-          <div>
-            <span className="text-stone-800 ">Contact Number</span>
-            <p>9766902092</p>
-          </div>
-          <div className="grid grid-cols-2 gap-4 sm:flex sm:gap-x-4">
-            <Link
-              to={{
-                pathname: "https://www.facebook.com/sindbaaz.ansari4325/about",
-              }}
-              target="_blank"
-              className=" shadow-lg icon pl-2 cursor-pointer"
-            >
-              <ion-icon name="logo-facebook"></ion-icon>
-            </Link>
-            <Link
-              to={{
-                pathname:
-                  "https://www.linkedin.com/in/sindbaaz-ansari-641729120/",
-              }}
-              target="_blank"
-              className="shadow-lg icon pl-2"
-            >
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </Link>
-            <Link className=" shadow-lg icon pl-2">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </Link>
+    <div>
+      <ul className="mt-4 text-center md:p-4 lg:px-8 lg:text-2xl gap-2  grid grid-cols-4 grid-rows-2 md:flex md:flex-col md:gap-12  ">
+        {list.map((item) => (
+          <ListItem key={item} handleClick={handleClick} selected={selected}>
+            {item}
+          </ListItem>
+        ))}
+        {/* <li className="list-items">
+          <Link className="icon" to="/education">
+            <ion-icon name="book-outline"></ion-icon>
+          </Link>
+          <span className="list-span">Education</span>
+        </li>
+        <li className="list-items">
+          <Link className="icon" to="workexp/tcs/silicon">
+            <ion-icon name="briefcase-outline"></ion-icon>
+          </Link>
+          <span className="translate-y-4 list-span">Work Experience</span>
+        </li>
+        <li className="list-items">
+          <Link className="icon md:mt-4 " to="/honours">
+            <ion-icon className="mt-4" name="trophy-outline"></ion-icon>
+          </Link>
+          <span className="list-span ">Honours</span>
+        </li>
+        <li className="list-items">
+          <Link className="icon" to="/skills">
+            <ion-icon name="library-outline"></ion-icon>
+          </Link>
+          <span className="list-span">skills</span>
+        </li>
+        <li className="list-items">
+          <Link className="icon" to="/technology">
+            <ion-icon name="construct-outline"></ion-icon>
+          </Link>
+          <span className="list-span translate-y-4 ">Technology and Tools</span>
+        </li> */}
+      </ul>
+    </div>
   );
 }
 
-export default Homepage;
+function ListItem({ children, handleClick, selected }) {
+  console.log(selected);
+  return (
+    <li className="list-items" onClick={handleClick}>
+      <Link
+        className={`${selected.toLowerCase() === children.toLowerCase() ? "bg-yellow-600 border-white" : ""} icon`}
+        to={`${children === "work Experience" ? "/workexp" : children && children === "technology and Tools" ? "/technology" : children}`}
+      >
+        <ion-icon
+          // className={selected === children ? "mb-2" : ""}
+          name="crop-outline"
+        ></ion-icon>
+        <span
+          className={`${
+            children === "work Experience" ||
+            children === "technology and Tools"
+              ? "translate-y-4"
+              : " "
+          }
+           list-span`}
+        >
+          {children}
+        </span>
+      </Link>
+    </li>
+  );
+}
+export default Navigation;
