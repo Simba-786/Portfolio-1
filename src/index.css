@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background-image: url("../asset/images/image-8.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.tools {
+  background-image: url("../asset/images/image-7.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* .background {
+  background-image: url("../asset/images/layoutbg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+/* .image {
+  width: 40px;
+  height: 40px;
+  background-image: url("../asset/images/image.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+@keyframes scaling {
+  from 50% {
+    transform: scale(50%);
+  }
+  to 100% {
+    transform: scale(100%);
+  }
+}
+
+@layer components {
+  .skills-list {
+    @apply hover:text-white hover:scale-110 hover:text-xs bg-gradient-to-b rounded-lg text-center  from-red-400 to-lime-200  border-2 border-red-400 py-2 px-2  text-[10px];
+  }
+  .technologies {
+    @apply font-semibold bg-amber-800 text-white m-2 inline-block px-1 py-1 rounded uppercase hover:text-amber-800 hover:bg-amber-200;
+  }
+  .cards-primary {
+    @apply border-2  shadow-sm rounded-lg text-yellow-100 text-sm p-2 text-[10px] bg-yellow-800;
+  }
+  .cards-secondary {
+    @apply border-2 text-yellow-800 text-sm shadow-sm rounded-lg p-2 text-[10px] bg-yellow-200;
+  }
+
+  .cards {
+    @apply border-2 border-black shadow-sm text-yellow-100 bg-gradient-to-b from-yellow-800 to-yellow-200   rounded-lg p-2 text-[10px];
+  }
+  .icon {
+    @apply hover:scale-125 ring ring-offset-2 ring-yellow-600 hover:ring-yellow-200  hover:text-black text-stone-800 text-2xl sm:pt-2 pt-2 w-10 sm:w-10 bg-white rounded-lg p-1;
+  }
+  .list-items {
+    @apply flex justify-center capitalize relative hover:z-10 hover:text-stone-800 items-center p-2;
+  }
+
+  .list-span {
+    @apply absolute hidden  md:text-sm md:block bottom-[-20px] left-[50%] translate-x-[-50%] text-stone-800 font-semibold;
+  }
+  .tools {
+    @apply text-center flex hover:text-xl text-xs hover:z-10 shadow-md items-center blur-[1px] hover:scale-110 hover:blur-none h-80 text-slate-800 transition-all duration-500 hover:grow p-2 w-[120px] mx-[-10px] border-2 border-slate-100 rounded-lg;
+  }
+}
+
+/* .appLayout {
+  background-color: red;
+  height: calc(100vh - 4rem);
+  padding: 4rem;
+  margin: 4rem 4rem 0 4rem;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+} */
